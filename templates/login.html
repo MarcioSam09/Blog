@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="static/css/login.css">
+</head>
+<body>
+    <form method="POST" aria-label="Formulário de Login">
+        <h1>Login</h1>
+        
+        <!-- Exibição de mensagens de erro -->
+        {% if erro %}
+        <div class="alert">
+            {{ erro }}
+        </div>
+        {% endif %}
+        
+        <label for="nome_usuario">Usuário</label>
+        <input type="text" id="nome_usuario" name="nome_usuario" placeholder="Digite seu usuário" required>
+        
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+        
+        <!-- Grupo de botões: Conectar e Cadastrar -->
+        <div class="btn-group">
+            <button type="submit" class="btn conectar">Conectar</button>
+            <a href="/cadastro" class="btn cadastrar">Cadastrar</a> <!-- Link para cadastro -->
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Postagem</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/criar_postagem.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Criar Postagem</h1>
+        </header>
+
+        <a href="{{ url_for('index') }}" class="btn voltar">Voltar</a>
+
+        <form method="POST" class="form-postagem">
+            <div class="campo">
+                <label for="titulo">Título</label>
+                <input type="text" id="titulo" name="titulo" placeholder="Título da postagem" required>
+            </div>
+
+            <div class="campo">
+                <label for="conteudo">Conteúdo</label>
+                <textarea id="conteudo" name="conteudo" placeholder="Conteúdo da postagem" required></textarea>
+            </div>
+
+            <button type="submit" class="btn criar">Criar Postagem</button>
+        </form>
+    </div>
+</body>
+</html>

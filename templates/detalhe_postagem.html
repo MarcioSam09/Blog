@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ postagem['titulo'] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/detalhe_postagem.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>{{ postagem['titulo'] }}</h1>
+        </header>
+
+        <section class="conteudo-postagem">
+            <p>{{ postagem['conteudo'] }}</p>
+            {% if postagem['usuario_id'] == session['usuario_id'] or session['eh_administrador'] %}
+                <a href="{{ url_for('excluir_postagem', postagem_id=postagem['id']) }}" class="btn excluir">Excluir postagem</a>
+            {% endif %}
+        </section>
+
+        <section class="comentarios">
+            <h2>Comentários</h2>
+            <ul>
+                {% for comentario in comentarios %}
+                    <li class="comentario">
+                        <p>{{ comentario['conteudo'] }}</p>
+                        {% if comentario['usuario_id'] == session['usuario_id'] or session['eh_administrador'] %}
+                            <a href="{{ url_for('excluir_comentario', comentario_id=comentario['id']) }}" class="btn excluir">Excluir</a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        {% if session['eh_administrador'] or postagem['usuario_id'] == session['usuario_id'] %}
+        <section class="adicionar-comentario">
+            <h2>Adicione um comentário</h2>
+            <form method="POST">
+                <textarea name="conteudo" placeholder="Adicione um comentário" required></textarea>
+                <div class="btn-container">
+                    <button type="submit" class="btn comentar">Comentar</button>
+                    <!-- Botão de Voltar -->
+                    <a href="{{ url_for('index') }}" class="btn voltar">Voltar</a>
+                </div>
+            </form>
+        </section>
+        {% else %}
+        <section class="botao-voltar">
+            <a href="{{ url_for('index') }}" class="btn voltar">Voltar</a>
+        </section>
+        {% endif %}
+    </div>
+</body>
+</html>

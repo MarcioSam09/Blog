@@ -1,0 +1,113 @@
+/* Configuração geral */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #434343, #9cbef9);
+    color: #ffffff;
+}
+
+/* Estilização do formulário */
+form {
+    background: rgba(71, 75, 112, 0.96); /* Fundo semi-transparente */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaçamento uniforme */
+}
+
+/* Título */
+h1 {
+    text-align: center;
+    font-size: 28px;
+    margin: 0;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+/* Labels */
+label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+/* Campos de entrada */
+input[type="text"],
+input[type="password"] {
+    width: 95%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #333333;
+    font-size: 16px;
+}
+
+/* Placeholder */
+input::placeholder {
+    color: #999999;
+}
+
+/* Estilos para os botões */
+.btn-group {
+    display: flex;
+    gap: 10px; /* Espaçamento entre os botões */
+    width: 100%;
+}
+
+.btn {
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo para o botão Conectar */
+.btn.conectar {
+    background: #4456fc;
+    border: none;
+    color: white;
+}
+
+.btn.conectar:hover {
+    background-color: #180ae1;
+}
+
+/* Estilo para o botão Cadastrar */
+.btn.cadastrar {
+    background: #28a745; /* Cor verde para o botão de cadastrar */
+    text-decoration: none; /* Remove o sublinhado */
+    color: white;
+    text-align: center;
+    display: block;
+}
+
+.btn.cadastrar:hover {
+    background-color: #218838;
+}
+
+/* Estilo para alertas de erro */
+.alert {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 14px;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Blog</h1>
+            {% if 'usuario_id' in session %}
+                <p class="user-info">Logado como: <strong>{{ session['nome_usuario'] }}</strong></p>
+                <nav>
+                    <a href="{{ url_for('logout') }}" class="btn">Sair</a>
+                    <a href="{{ url_for('criar_postagem') }}" class="btn">Criar postagem</a>
+                </nav>
+            {% else %}
+                <nav>
+                    <a href="{{ url_for('login') }}" class="btn">Conectar</a>
+                    <a href="{{ url_for('cadastro') }}" class="btn">Cadastrar</a>
+                </nav>
+            {% endif %}
+        </header>
+        
+        <section class="postagens">
+            <h2>Postagens</h2>
+            <ul>
+                {% for postagem in postagens %}
+                <li class="postagem">
+                    <a href="{{ url_for('detalhe_postagem', postagem_id=postagem['id']) }}" class="postagem-titulo">{{ postagem['titulo'] }}</a>
+                    {% if postagem['usuario_id'] == session['usuario_id'] or session['eh_administrador'] %}
+                        <a href="{{ url_for('excluir_postagem', postagem_id=postagem['id']) }}" class="excluir">Excluir</a>
+                    {% endif %}
+                </li> 
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+</body>
+</html>
